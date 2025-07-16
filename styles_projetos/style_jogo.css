@@ -1,0 +1,394 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* ou remova se não for necessário */
+    overflow-x: hidden;
+}
+
+/* Titulo e logo */
+header {
+  background-color: rgb(92, 127, 179);
+  padding: 10px 16px;
+  display: flex;
+  justify-content: center; /* centraliza conteúdo */
+  align-items: center;
+  position: relative; /* para posicionar botão absoluto */
+}
+
+#headerContent {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+#logoDiv img {
+    width: 75px;
+    height: auto;
+}
+
+#titulo {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1em;
+    color: white;
+}
+
+/* Botão para abrir o portifolio ou outros*/
+#abrirPaginaDiv {
+  position: absolute;
+  left: 10px; /* distância da borda esquerda */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#btnAbrirPagina {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: #3f51b5;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btnAbrirPagina:hover {
+  background-color: #e0e0e0;
+}
+
+/* Conteudo do site */
+#layout {
+    display: flex;
+    /* height: 100vh;  <-- remova ou comente esta linha */
+    min-height: 100vh;
+    /* Use min-height se quiser manter um mínimo */
+    margin: 0;
+    padding: 0;
+}
+
+/* Botão RESET */
+#resetButton {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.2em;
+    background-color: #6fa8dc;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+#resetButton:hover {
+    background-color: #3d7bb6;
+}
+
+.dropzone.correta {
+    background-color: #a6f4a6;
+    border-color: #4caf50;
+}
+
+.dropzone.errada {
+    background-color: #f7b0b0;
+    border-color: #d32f2f;
+}
+
+/* Área das sílabas */
+
+#ConteudoB {
+    width: 30%;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    /* Importante: empilha botão + grid */
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    border-radius: 20px;
+    /* Canto arredondado */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    max-height: 100vh;
+    overflow-y: auto;
+    gap: 20px;
+    /* Espaço entre botão e grid */
+}
+
+#imagem_silaba {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    place-items: center;
+    justify-items: center;
+}
+
+#imagem_silaba img {
+    width: auto;
+    max-width: 100px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    object-fit: contain;
+
+    padding: 8px;
+    /* espaço interno entre a imagem e a borda */
+    border-radius: 12px;
+    /* bordas arredondadas */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    /* destaca a imagem em fundo claro */
+}
+
+#imagem_silaba img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.silaba {
+    width: auto;
+    max-width: 90px;
+    max-width: 100px;
+    height: auto;
+    cursor: grab;
+    transition: transform 0.2s, box-shadow 0.2s;
+    object-fit: contain;
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    background-color: white;
+}
+
+.silaba:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Area das figuras */
+#conteudoA {
+    width: 75%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    overflow: hidden;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    background-color: #b4ecff;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    max-height: 150px;
+}
+
+.item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.item img {
+    width: 100px;
+    /* aumentado de 80px para 100px */
+    height: auto;
+    border-radius: 8px;
+    background: transparent;
+    padding: 4px;
+}
+
+.palavra h4 {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 1.8em;
+    color: #333;
+    font-family: system-ui, 'Open Sans', sans-serif;
+    padding-left: 10px;
+}
+
+.dropzone {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 48px;
+    border: 2px dashed #aaa;
+    border-radius: 6px;
+    background-color: #f0f0f0;
+    padding: 2px;
+}
+
+.dropzone img {
+    width: 40px;
+    height: auto;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+/* POPUP MODAL PARABENS */
+
+#popupParabens {
+  /* Corrigido para começar oculto e não com display: flex */
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+
+  /* Quando ativado via JS, virará "display: flex" */
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-size: 20px;
+}
+
+#btnFecharPopup {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #3d7bb6;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#btnFecharPopup:hover {
+  background-color: #3d7bb6;
+}
+
+/* POPUP MODAL ERRO */
+
+#popupErro {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content.erro {
+  background: #f44336;
+  color: white;
+  padding: 30px 40px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-size: 20px;
+
+  display: flex;
+  flex-direction: column;  /* empilha verticalmente */
+  align-items: center;     /* centraliza horizontalmente */
+  gap: 20px;               /* espaço entre texto e botão */
+}
+
+#btnFecharErro {
+  margin-top: 0;  /* já tem gap */
+  padding: 10px 20px;
+  background-color: white;
+  color: #f44336;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100px;
+}
+
+
+#btnFecharErro:hover {
+  background-color: #ffe6e6;
+}
+
+/* Efeito confetis */
+#confettiCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: none; /* Começa invisível */
+}
+
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+    #layout {
+        flex-direction: column;
+    }
+
+    #headerContent {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    #titulo h1 {
+        font-size: 1em;
+    }
+
+    #logoDiv img {
+        width: 60px;
+    }
+
+    #ConteudoB,
+    #conteudoA {
+        width: 100%;
+    }
+
+    #ConteudoB {
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    #imagem_silaba {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 10px;
+    }
+
+    #imagem_silaba img {
+        max-width: 80px;
+        padding: 6px;
+        /* reforça o espaço interno */
+    }
+
+    .item {
+        flex-direction: column;
+        text-align: center;
+        max-height: none;
+    }
+
+    .item img {
+        width: 80px;
+    }
+
+    .palavra h4 {
+        justify-content: center;
+        font-size: 1.5em;
+        padding: 8px 0;
+    }
+
+    .dropzone {
+        width: 45px;
+        height: 45px;
+    }
+}

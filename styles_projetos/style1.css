@@ -1,0 +1,72 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+
+form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+}
+
+.dados {
+    text-align: left;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.info {
+    text-align: left;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+
+    /* Novo */
+    display: flex;
+    gap: 40px;
+}
+
+.bloco {
+    display: flex;
+    flex-direction: column;
+}
+.atividades {
+    margin-top: 5px;
+}
+
+.info label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.botoes {
+    margin-top: 15px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+h3, h4 {
+    margin: 5px;
+}
