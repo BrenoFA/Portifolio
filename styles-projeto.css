@@ -1,6 +1,7 @@
 /* Estilos para páginas de projeto */
 
 /* Cabeçalho ajustado para projetos */
+
 .project-hero {
   padding: calc(var(--spacing-xxl) * 1.5) 0 var(--spacing-xl);
   background-color: var(--color-background-alt);

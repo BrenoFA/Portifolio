@@ -1,3 +1,5 @@
+let silabaSelecionada = null;
+
 function arrastar(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
 }
@@ -150,7 +152,6 @@ function validarRespostas() {
 document.addEventListener("DOMContentLoaded", () => {
   const btnFecharParabens = document.getElementById("btnFecharPopup");
   const popupParabens = document.getElementById("popupParabens");
-
   if (btnFecharParabens && popupParabens) {
     btnFecharParabens.addEventListener("click", () => {
       popupParabens.style.display = "none";
@@ -160,69 +161,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const btnFecharErro = document.getElementById("btnFecharErro");
   const popupErro = document.getElementById("popupErro");
-
   if (btnFecharErro && popupErro) {
     btnFecharErro.addEventListener("click", () => {
       popupErro.style.display = "none";
     });
   }
-});
-function iniciarConfetes() {
-  const canvas = document.getElementById("confettiCanvas");
-  const ctx = canvas.getContext("2d");
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  canvas.style.display = "block";
+  // Clique para selecionar sílaba
+  document.querySelectorAll(".silaba").forEach(silaba => {
+    silaba.addEventListener("click", () => {
+      if (silaba.style.display === "none") return;
 
-  const confetes = [];
-
-  for (let i = 0; i < 150; i++) {
-    confetes.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height - canvas.height,
-      r: Math.random() * 6 + 4,
-      d: Math.random() * 10 + 5,
-      color: `hsl(${Math.random() * 360}, 100%, 50%)`,
-      tilt: Math.random() * 10 - 10,
-      tiltAngle: 0,
-      tiltAngleIncrement: Math.random() * 0.1 + 0.05
-    });
-  }
-
-  function desenhar() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    confetes.forEach(c => {
-      ctx.beginPath();
-      ctx.lineWidth = c.r;
-      ctx.strokeStyle = c.color;
-      ctx.moveTo(c.x + c.tilt, c.y);
-      ctx.lineTo(c.x, c.y + c.tilt + c.r);
-      ctx.stroke();
-    });
-
-    atualizar();
-    requestAnimationFrame(desenhar);
-  }
-
-  function atualizar() {
-    confetes.forEach(c => {
-      c.y += Math.cos(c.d) + 2;
-      c.tiltAngle += c.tiltAngleIncrement;
-      c.tilt = Math.sin(c.tiltAngle) * 15;
-
-      if (c.y > canvas.height) {
-        c.y = -10;
-        c.x = Math.random() * canvas.width;
+      if (silabaSelecionada) {
+        silabaSelecionada.classList.remove("selecionada");
       }
+
+      silabaSelecionada = silaba;
+      silaba.classList.add("selecionada");
     });
-  }
+  });
 
-  desenhar();
+  // Clique na dropzone para posicionar a sílaba
+  document.querySelectorAll(".dropzone").forEach(dropzone => {
+    dropzone.addEventListener("click", () => {
+      if (!silabaSelecionada) return;
 
-  // Parar após 5 segundos
-  setTimeout(() => {
-    canvas.style.display = "none";
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-  }, 5000);
-}
+      // Remove se já tiver algo lá
+      removerSilaba(dropzone);
+
+      const clone = silabaSelecionada.cloneNode(true);
+      clone.removeAttribute("id");
+      clone.classList.remove("silaba", "selecionada");
+      clone.setAttribute("data-original-id", silabaSelecionada.id);
+      clone.setAttribute("draggable", "false");
+      clone.style.cursor = "pointer";
+
+      clone.onclick = function () {
+        removerSilaba(clone.parentElement);
+      };
+
+      dropzone.appendChild(clone);
+      silabaSelecionada.style.display = "none";
+      silabaSelecionada.classList.remove("selecionada");
+      silabaSelecionada = null;
+
+      validarRespostas();
+    });
+  });
+});

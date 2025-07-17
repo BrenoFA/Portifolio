@@ -593,6 +593,64 @@ nav .menu a:hover::after {
   width: 100%;
 }
 
+/* Chat gpt */
+
+.form-group input[type="radio"],
+.form-group input[type="checkbox"] {
+  margin-right: 0.5em;
+  accent-color: var(--color-primary);
+}
+
+.form-group select {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-md);
+  transition: border-color var(--transition-fast);
+}
+.radio-group {
+  display: flex;
+  gap: 1.5em; /* Espaço entre os botões */
+  margin-top: 0.5em;
+}
+
+.radio-group label,
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group label {
+  max-width: 100%;
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+.form-group_checkbox-group{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 /* Footer */
 footer {
   padding: var(--spacing-xl) 0 var(--spacing-md);
@@ -786,4 +844,9 @@ footer {
     width: 300px;
     height: 300px;
   }
+}
+
+.erro {
+  border: 2px solid red !important;
+  background-color: #ffe6e6 !important;
 }
